@@ -11,9 +11,9 @@ function jInvoker() {
 }
 
 jInvoker();
-
+var signalR, _message, _notifications;
 function loadHub() {
-  var signalR = $.signalR;
+  signalR = $.signalR;
 
   function makeProxyCallback(hub, callback) {
     return function() {
@@ -104,27 +104,37 @@ function loadHub() {
     return proxies;
   };
 
-  signalR.hub = $.hubConnection("http://www.puiv.com/signalr", { useDefaultPath: false });
-  $.extend(signalR, signalR.hub.createHubProxies());
+	signalR.hub = $.hubConnection("http://www.puiv.com/signalr", { useDefaultPath: false });
+  
+	$.connection.hub.disconnected(function() {
+		$.connection.hub.start();
+	});
+	
+	signalR.hub.stateChanged(function (change) {
+		if (change.newState === $.signalR.connectionState.connected) {
+			_message.server.registerNotifications();
+			_notifications.server.registerNotifications();
+			setTimeout(function() {
+				signalR.hub.stop();
+			}, 5000);
+		} 
+	});
 
-  var message = $.connection.messageHub;
+	$.extend(signalR, signalR.hub.createHubProxies());
 
-  message.client.refreshMessage = function(data) {
-  	notificationManager(data, 'msg');
-  }
+	_message = $.connection.messageHub;
 
-  var notifications = $.connection.notificationHub;
+	_message.client.refreshMessage = function(data) {
+		notificationManager(data, 'msg');
+	}
 
-  notifications.client.refreshNotification = function(data) {
-  	notificationManager(data, 'not');
-  }
+	_notifications = $.connection.notificationHub;
 
-  $.connection.hub.start().done(function() {
-  	message.server.registerNotifications();
-    notifications.server.registerNotifications();
-  }).fail(function(e) {
-    console.log(e);
-  });
+	_notifications.client.refreshNotification = function(data) {
+		notificationManager(data, 'not');
+	}
+	
+	signalR.hub.start();
 }
 
 var messages = [];
@@ -161,8 +171,8 @@ var createNotifications = function(){
   		    title: "Yeni Bildirim", 
   		    message: notifications[x].Message,
   		    buttons: [{
-          	title: "Göster"
-     			}]
+				title: "Göster"
+			}]
   	    }
       );
       var priv = notifications[x].AffectedSlug;
@@ -215,3 +225,18 @@ chrome.notifications.onButtonClicked.addListener(function(notifId) {
     }
   }
 });
+
+chrome.browserAction.onClicked.addListener(function(tab) { 
+	chrome.tabs.create({ url: "http://www.puiv.com/" });
+});
+
+setInterval(function(){	
+	/*console.log('Re-connecting');
+	$.connection.hub.stop();
+	$.connection.hub.start().done(function() {
+		_message.server.registerNotifications();
+		_notifications.server.registerNotifications();
+	}).fail(function(e) {
+		console.log(e);
+	});*/
+}, 5000);
