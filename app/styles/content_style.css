@@ -1,0 +1,135 @@
+/* ============
+	Globals
+============ */
+
+.theme-select{
+	cursor: pointer;
+}
+
+#id-theme-list .media-meta{
+	display: none;
+}
+
+#id-theme-list{
+	height: 100%;
+}
+
+/* ============
+	Theme Dark
+============ */
+
+.theme-dark{
+	
+}
+
+.theme-dark .panel{
+	background-color: #666;
+}
+
+.theme-dark .panel-tab-double .panel-heading ul li a, .theme-dark .panel-tab-double .panel-heading ul li i{
+	color: #ccc;
+}
+
+.theme-dark .body-content{
+	background-color: #333;
+}
+
+.theme-dark #sidebar-left:after{
+	background-color: #333;
+}
+
+.theme-dark #sidebar-left ul li {
+	background-color: #666;
+}
+
+.theme-dark #sidebar-left ul li a{
+	color: #ccc;
+}
+
+.theme-dark .navbar-toolbar{
+	background-color: #000;
+}
+
+.theme-dark #header .navbar-header{
+	background-color: #000;
+}
+
+.theme-dark .twitter-typeahead input{
+	background-color: #666 !important;
+  color: white !important;
+}
+
+.theme-dark .btn{
+	color: #ccc !important;
+}
+
+.theme-dark .theme-dark-meta{
+	display: block !important;
+}
+
+.theme-dark .navbar-toolbar .navbar-right .dropdown > a > i{
+	color: #ccc;
+}
+
+.theme-dark .navbar-profile *{
+	color:#ccc !important;
+}
+
+.theme-dark .panel-tab .panel-body{
+	color: #ccc;
+}
+
+.theme-dark .body-content .row > div:first-child .panel-body{
+	background-color: #444;
+}
+
+.theme-dark .nav>li>a:focus, .theme-dark .nav>li>a:hover{
+	background-color: #666 !important;
+}
+
+.theme-dark #blog-list .blog-item{
+	background-color: #ccc;
+}
+
+.theme-dark .pagination li a{
+	background-color: #666;
+  color: #ccc !important;
+}
+
+.theme-dark .pagination > .active > a, .pagination > .active > span{
+	background-color: #ccc !important;
+	color:black !important;
+}
+
+.theme-dark .blog-item .btn-group-vertical *{
+  color: #333 !important;
+}
+
+.theme-dark .footer-content{
+	display: none;
+}
+
+.theme-dark .navbar-toolbar .navbar-right .dropdown-menu{
+	background-color: #333;
+}
+
+.theme-dark .navbar-toolbar .navbar-right .dropdown-menu .dropdown-header{
+	background-color: #666;
+}
+
+.theme-dark .navbar-toolbar .navbar-right .dropdown-menu .dropdown-header .title{
+	color: #ccc;
+}
+
+.theme-dark #id-message-list{
+  height: 100%;
+  padding: 10px;
+}
+
+.theme-dark #collapseOne{
+	padding-right: 10px;
+}
+
+/* ============
+	Theme Areo
+============ */
