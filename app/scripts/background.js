@@ -229,14 +229,3 @@ chrome.notifications.onButtonClicked.addListener(function(notifId) {
 chrome.browserAction.onClicked.addListener(function(tab) { 
 	chrome.tabs.create({ url: "http://www.puiv.com/" });
 });
-
-setInterval(function(){	
-	/*console.log('Re-connecting');
-	$.connection.hub.stop();
-	$.connection.hub.start().done(function() {
-		_message.server.registerNotifications();
-		_notifications.server.registerNotifications();
-	}).fail(function(e) {
-		console.log(e);
-	});*/
-}, 5000);
