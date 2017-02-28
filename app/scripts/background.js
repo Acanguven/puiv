@@ -68,7 +68,7 @@ var createNotifications = function() {
       shownIds.push({
         id: notifications[x].Id.toString(),
         onclick: function(priv) {
-          var newURL = "http://www.puiv.com" + priv;
+          var newURL = "https://www.puiv.com" + priv;
           chrome.tabs.create({ url: newURL });
         },
         url: priv
@@ -82,7 +82,7 @@ var createNotifications = function() {
       })) {
       chrome.notifications.create(messages[x].Id.toString(), {
         type: 'basic',
-        iconUrl: "http://www.puiv.com" + messages[x].SenderAvatar,
+        iconUrl: "https://www.puiv.com" + messages[x].SenderAvatar,
         title: messages[x].SenderUserName,
         message: messages[x].Body,
         buttons: [{
@@ -95,7 +95,7 @@ var createNotifications = function() {
           var newURL = priv;
           chrome.tabs.create({ url: newURL });
         },
-        url: '"http://www.puiv.com/k/mesajlar/gelen-kutusu"'
+        url: '"https://www.puiv.com/k/mesajlar/gelen-kutusu"'
       });
     }
   }
@@ -114,7 +114,7 @@ chrome.notifications.onButtonClicked.addListener(function(notifId) {
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.tabs.create({ url: "http://www.puiv.com/" });
+  chrome.tabs.create({ url: "https://www.puiv.com/" });
 });
 
 function IsJsonString(str) {
